@@ -11,7 +11,7 @@ const VideoPlayer = ({ userId, videoId }) => {
   const { data: savedProgress } = useGetProgressQuery({ userId, videoId });
   const [updateProgress] = useUpdateProgressMutation();
 
-  // ✅ Set watchedSeconds as soon as data is available
+  //  Set watchedSeconds as soon as data is available
   useEffect(() => {
     if (savedProgress) {
       const restored = new Set(savedProgress.seconds || []);
@@ -19,7 +19,7 @@ const VideoPlayer = ({ userId, videoId }) => {
     }
   }, [savedProgress]);
 
-  // ✅ Set video currentTime after metadata is loaded
+  //  Set video currentTime after metadata is loaded
   useEffect(() => {
     const video = videoRef.current;
     if (!savedProgress || !video) return;
@@ -41,7 +41,7 @@ const VideoPlayer = ({ userId, videoId }) => {
     };
   }, [savedProgress]);
 
-  // ✅ Track real viewing
+  //  Track real viewing
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
